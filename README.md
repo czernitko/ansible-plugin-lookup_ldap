@@ -44,8 +44,8 @@ ldap_lookup_config:
   gssapi:
     dns_canon: true
   # Valid only for authentication mechanism "gssapi".
-  # If dns_canon is set to true, then reverse DNS is used to canonicalize 
-  # the SASL host name. Equivalent to passing '-N' to ldapsearch command.
+  # If dns_canon is set to true, then reverse DNS is used to canonicalize the SASL host name. 
+  # Setting to false is equivalent to passing '-N' to ldapsearch command.
   # Default: true
 
   scope: subtree
