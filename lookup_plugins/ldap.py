@@ -172,6 +172,8 @@ class LookupModule(LookupBase):
             LookupModule.set_ldap_library_options(ctx)
             lo = ldap.initialize(ctx['url'])
             if ctx.get('auth','simple') == 'gssapi':
+                if ctx.get('gssapi',{}).get('dns_canon', True) == False:
+                    lo.set_option(ldap.OPT_X_SASL_NOCANON, 1)
                 auth_tokens = ldap.sasl.gssapi()
                 lo.sasl_interactive_bind_s('', auth_tokens)
             else:
