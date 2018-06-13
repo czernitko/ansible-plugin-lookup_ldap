@@ -19,7 +19,10 @@
 # - Improved Python 3 support and recent python-ldap
 
 from __future__ import absolute_import
-from builtins import str
+try:
+    from builtins import str
+except ImportError:
+    from __builtin__ import str
 
 from ansible import errors
 
@@ -31,6 +34,11 @@ import base64
 import ldap
 import ldap.sasl
 import threading
+
+try:
+    basestring
+except NameError:
+    basestring = str
 
 default_context = 'ldap_lookup_config'
 
